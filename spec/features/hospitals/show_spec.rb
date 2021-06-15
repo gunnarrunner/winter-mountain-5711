@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'doctors show page' do
+RSpec.describe 'hospitals show page' do
   before :each do
     @hospital1 = Hospital.create!(name: "General Hospital")
     @hospital2 = Hospital.create!(name: "Swedish")
@@ -25,14 +25,14 @@ RSpec.describe 'doctors show page' do
     @doctor_patient10 = DoctorPatient.create!(doctor_id: @doctor4.id, patient_id: @patient1.id)
     @doctor_patient11 = DoctorPatient.create!(doctor_id: @doctor4.id, patient_id: @patient6.id)
 
-    visit "/doctors/#{@doctor1.id}"
+    visit "/hospitals/#{@hospital1.id}"
   end
 
   it 'can show all the information about that specific dr such as name, specialty and the where they graduated' do
 
     
-    expect(current_path).to eq("/doctors/#{@doctor1.id}")
-    expect(page).to have_content(@doctor1.name)
+    expect(current_path).to eq("/hospitals/#{@hospital1.id}")
+    expect(page).to have_content(@hospital1.name)
     expect(page).to have_content(@doctor1.specialty)
     expect(page).to have_content(@doctor1.university)
     expect(page).to_not have_content(@doctor2.name)
