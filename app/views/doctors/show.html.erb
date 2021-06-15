@@ -5,5 +5,7 @@
 <h3> Hospital Currently Working at: <%= @hospital %> </h3>
 <br>
 <h3> Patients Names Assocaited with this Doctor: <% @doctor.patients.each do |patient| %> </h3>
-                                                <p>  <%= patient.name %> </p>
+                                                <section id="patient-<%= patient.id %>">
+                                                <p>  <%= patient.name %> <%= button_to "Remove Patient", "/doctors/#{patient.id}", method: :delete %> </p>
+                                                </section>
                                                 <% end %>

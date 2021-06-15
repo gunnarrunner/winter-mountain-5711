@@ -32,7 +32,6 @@ RSpec.describe 'hospitals show page' do
 
   it 'can show the hospitals name as well as the number of doctors with a their unique list of hospitals' do
 
-    save_and_open_page
     expect(current_path).to eq("/hospitals/#{@hospital1.id}")
     expect(page).to have_content(@hospital1.name)
     expect(page).to have_content(@doctor1.university)

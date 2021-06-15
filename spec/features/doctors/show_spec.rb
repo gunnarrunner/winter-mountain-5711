@@ -52,4 +52,15 @@ RSpec.describe 'doctors show page' do
     expect(page).to have_content(@patient5.name)
     expect(page).to_not have_content(@patient6.name)
   end
+
+  it 'can delete a patient from the doctors caseload' do
+
+    expect(page).to have_content(@patient1.name)
+    # save_and_open_page
+    within("#patient-#{@patient1.id}") do
+      click_button("Remove Patient")
+    end
+
+    expect(page).to_not have_content(@patient1.name)
+  end
 end
