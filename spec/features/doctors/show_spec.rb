@@ -7,6 +7,8 @@ RSpec.describe 'doctors show page' do
     @doctor2 = Doctor.create!(name: "Frank", specialty: "Neurological", university: "Harvard", hospital_id: @hospital2.id)
     @doctor3 = Doctor.create!(name: "George", specialty: "Othopedic", university: "Harvard", hospital_id: @hospital2.id)
     @doctor4 = Doctor.create!(name: "Bobby", specialty: "Cardiac", university: "Brown", hospital_id: @hospital1.id)
+    @doctor5 = Doctor.create!(name: "Doug", specialty: "Neurological", university: "Yale", hospital_id: @hospital1.id)
+    @doctor6 = Doctor.create!(name: "Zenon", specialty: "Othopedic", university: "Yale", hospital_id: @hospital1.id)
     @patient1 = Patient.create!(name: "Jojo", age: 55)
     @patient2 = Patient.create!(name: "Boone", age: 30)
     @patient3 = Patient.create!(name: "Chase", age: 33)

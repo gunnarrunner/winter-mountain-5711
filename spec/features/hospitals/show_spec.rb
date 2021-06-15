@@ -7,6 +7,8 @@ RSpec.describe 'hospitals show page' do
     @doctor2 = Doctor.create!(name: "Frank", specialty: "Neurological", university: "Harvard", hospital_id: @hospital2.id)
     @doctor3 = Doctor.create!(name: "George", specialty: "Othopedic", university: "Harvard", hospital_id: @hospital2.id)
     @doctor4 = Doctor.create!(name: "Bobby", specialty: "Cardiac", university: "Brown", hospital_id: @hospital1.id)
+    @doctor5 = Doctor.create!(name: "Doug", specialty: "Neurological", university: "Yale", hospital_id: @hospital1.id)
+    @doctor6 = Doctor.create!(name: "Zenon", specialty: "Othopedic", university: "Yale", hospital_id: @hospital1.id)
     @patient1 = Patient.create!(name: "Jojo", age: 55)
     @patient2 = Patient.create!(name: "Boone", age: 30)
     @patient3 = Patient.create!(name: "Chase", age: 33)
@@ -28,26 +30,13 @@ RSpec.describe 'hospitals show page' do
     visit "/hospitals/#{@hospital1.id}"
   end
 
-  it 'can show all the information about that specific dr such as name, specialty and the where they graduated' do
+  it 'can show the hospitals name as well as the number of doctors with a their unique list of hospitals' do
 
-    
+    save_and_open_page
     expect(current_path).to eq("/hospitals/#{@hospital1.id}")
     expect(page).to have_content(@hospital1.name)
-    expect(page).to have_content(@doctor1.specialty)
     expect(page).to have_content(@doctor1.university)
-    expect(page).to_not have_content(@doctor2.name)
-    expect(page).to_not have_content(@doctor2.specialty)
+    expect(page).to have_content(@doctor4.university)
     expect(page).to_not have_content(@doctor2.university)
-  end
-
-  it 'can show the name of the hospital where the specific dr works at as well as all the patients associated with this specific dr' do
-
-    expect(page).to have_content(@hospital1.name)
-    expect(page).to have_content(@patient1.name)
-    expect(page).to have_content(@patient2.name)
-    expect(page).to have_content(@patient3.name)
-    expect(page).to have_content(@patient4.name)
-    expect(page).to have_content(@patient5.name)
-    expect(page).to_not have_content(@patient6.name)
   end
 end
